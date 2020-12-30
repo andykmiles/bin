@@ -16,11 +16,11 @@ then
     sed -i "s/{{proj}}/$2/g" terminal
     sed -i "s/{{proj}}/$2/g" build-dev
 else
-    sed -i "" "s/{{proj}}/$1/g" setup.py
-    sed -i "" "s/{{proj}}/$1/g" pytest
-    sed -i "" "s/{{proj}}/$1/g" python
-    sed -i "" "s/{{proj}}/$1/g" terminal
-    sed -i "" "s/{{proj}}/$1/g" build-dev
+    sed -i "" "s/{{proj}}/$2/g" setup.py
+    sed -i "" "s/{{proj}}/$2/g" pytest
+    sed -i "" "s/{{proj}}/$2/g" python
+    sed -i "" "s/{{proj}}/$2/g" terminal
+    sed -i "" "s/{{proj}}/$2/g" build-dev
 fi
 
 ./build-dev
