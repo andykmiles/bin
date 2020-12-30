@@ -1,5 +1,4 @@
 #!/bin/zsh
-# $1 ghorg $2 repo $3 lin or mac
 cd ~/ws
 mkdir -p $1/$2 && cd $1/$2
 git clone git@github.com:andykmiles/py.git .
