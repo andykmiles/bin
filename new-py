@@ -1,6 +1,5 @@
 #!/bin/zsh
 # $1 ghorg $2 repo $3 lin or mac
-host=$(hostname)
 cd ~/ws
 mkdir -p $1/$2 && cd $1/$2
 git clone git@github.com:andykmiles/py.git .
@@ -10,14 +9,21 @@ mkdir docs
 mv {{proj}}.Dockerfile $2.Dockerfile
 git remote rm origin
 
-if [$host .eq "linuxdev"]
+if [ $(hostname) = 'linuxdev' ]
 then
     sed -i "s/{{proj}}/$2/g" setup.py
     sed -i "s/{{proj}}/$2/g" pytest
     sed -i "s/{{proj}}/$2/g" python
     sed -i "s/{{proj}}/$2/g" terminal
     sed -i "s/{{proj}}/$2/g" build-dev
+else
+    sed -i "" "s/{{proj}}/$1/g" setup.py
+    sed -i "" "s/{{proj}}/$1/g" pytest
+    sed -i "" "s/{{proj}}/$1/g" python
+    sed -i "" "s/{{proj}}/$1/g" terminal
+    sed -i "" "s/{{proj}}/$1/g" build-dev
 fi
+
 ./build-dev
 git add . && git commit -m "init"
 gh repo create $1/$2 --public -y
